@@ -62,6 +62,7 @@ export default function Home() {
 
   return (
     <div className="m-4">
+      <h1 className="p-4 text-2xl font-semibold text-center m-2">Basic Todo App By Musa Bukhari</h1>
       {/* Button to add a new todo */}
       <button className="w-fit p-2 px-4 mb-4 bg-gray-800 text-white rounded-lg m-1" onClick={() => addTodo()}>Add</button>
       {/* Button to edit todo */}
