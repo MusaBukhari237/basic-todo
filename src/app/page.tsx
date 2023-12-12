@@ -1,6 +1,7 @@
 'use client';
 
 import React from "react";
+import TodoItem from "./components/todoItem";
 
 export default function Home() {
 
@@ -38,7 +39,7 @@ export default function Home() {
   const editTodo = (index: number) => {
     const tempItems = getAllTodo();
 
-    const todoTitle = prompt("Todo Title : ", tempItems[index] );
+    const todoTitle = prompt("Todo Title : ", tempItems[index]);
     if (todoTitle) {
 
       // pushing new todo to the list
@@ -65,9 +66,9 @@ export default function Home() {
     }
   }
 
-React.useEffect(() => {
-  getAll();
-}, [])
+  React.useEffect(() => {
+    getAll();
+  }, [])
 
   return (
     <div className="m-4">
@@ -76,16 +77,17 @@ React.useEffect(() => {
 
       <ul>
         {items.length > 0 ?
-        items.map((todo: any, index: number) =>
-          <li className="flex items-center bg-gray-200 mb-2 p-2 rounded-lg pl-4">
-            <span className="w-full">{todo}</span>
-            <button className="w-fit p-2 px-4 bg-gray-800 text-white rounded-lg m-1" onClick={() => editTodo(index)}>Edit</button>
-            <button className="w-fit p-2 px-4 bg-gray-800 text-white rounded-lg m-1" onClick={() => deleteTodo(index)}>Delete</button>
-          </li>
-        )
-        :
-        <h2 className="text-center p-4 text-2xl">0 Todo's</h2>
-      }
+          items.map((todo: any, index: number) =>
+            <TodoItem
+              todo={todo}
+              index={index}
+              onEdit={editTodo}
+              onDelete={deleteTodo}
+            />
+          )
+          :
+          <h2 className="text-center p-4 text-2xl">0 Todo's</h2>
+        }
       </ul>
     </div>
   )
